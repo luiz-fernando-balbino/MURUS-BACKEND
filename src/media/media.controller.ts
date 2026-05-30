@@ -3,7 +3,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { MediaService } from './media.service';
 import { diskStorage } from 'multer';
 import * as path from 'path';
-import { v4 as uuidv4 } from 'uuid'; // Vamos precisar instalar essa biblioteca para gerar nomes únicos
+import { v4 as uuidv4 } from 'uuid';
 
 @Controller('media')
 export class MediaController {
@@ -14,7 +14,6 @@ export class MediaController {
     FileInterceptor('file', {
       storage: diskStorage({
         destination: (req, file, cb) => {
-          // Instancia dinamicamente o serviço para buscar a pasta correta (Ano/Mês)
           const mediaService = new MediaService();
           const uploadPath = mediaService.getUploadPath();
           cb(null, uploadPath);

@@ -4,8 +4,11 @@ import * as path from 'path';
 
 @Injectable()
 export class MediaService {
-  // Caminho absoluto do seu cartão SD mapeado na ficha técnica
-  private readonly basePath = '/home/luizfb/Projects/galeria-sd/galeria-app';
+  // Caminho absoluto
+//   private readonly basePath = '/home/luizfb/Projects/galeria-sd/galeria-app';
+
+  // Altere temporariamente para testar no Windows:
+  private readonly basePath = 'C:\\murus-teste';
 
   constructor() {
     // Garante que a pasta raiz do app no cartão SD exista ao iniciar o serviço
