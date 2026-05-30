@@ -1,4 +1,4 @@
-import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Post, UseInterceptors, UploadedFile, Get } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { MediaService } from './media.service';
 import { diskStorage } from 'multer';
@@ -19,7 +19,6 @@ export class MediaController {
           cb(null, uploadPath);
         },
         filename: (req, file, cb) => {
-          // Mantém a extensão original (ex: .jpg, .mp4) e gera um nome único aleatório via UUID
           const fileExtension = path.extname(file.originalname);
           const uniqueFilename = `${uuidv4()}${fileExtension}`;
           cb(null, uniqueFilename);
@@ -29,5 +28,10 @@ export class MediaController {
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     return this.mediaService.handleUpload(file);
+  }
+
+  @Get('list')
+  listAllImages() {
+    return this.mediaService.listImages();
   }
 }
