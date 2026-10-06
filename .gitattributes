@@ -1,0 +1,11 @@
+# Normaliza finais de linha (evita ruído Windows <-> Linux no servidor Ubuntu)
+* text=auto eol=lf
+*.sh text eol=lf
+*.md text eol=lf
+
+# Binários
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.mp4 binary
+*.mov binary

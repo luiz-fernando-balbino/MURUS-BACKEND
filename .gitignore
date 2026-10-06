@@ -1,56 +1,117 @@
-# compiled output
-/dist
-/node_modules
-/build
+# ============================================================
+# MURUS Backend - .gitignore
+# Organizado por categoria. Adicione novas regras na seção certa.
+# ============================================================
 
-# Logs
-logs
+# --- Dependências -------------------------------------------
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# --- Build / saída compilada --------------------------------
+dist/
+build/
+out/
+*.tsbuildinfo
+
+# --- Variáveis de ambiente e segredos (NUNCA versionar) -----
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+secrets/
+
+# --- Dados do MURUS (mídias dos usuários - NUNCA versionar) -
+# Pasta de armazenamento usada em desenvolvimento local
+storage/
+uploads/
+media-data/
+.murus-storage
+# Extensões de mídia soltas por acidente na raiz do repositório
+/*.jpg
+/*.jpeg
+/*.png
+/*.webp
+/*.gif
+/*.heic
+/*.heif
+/*.mp4
+/*.mov
+/*.m4v
+/*.webm
+
+# --- Logs ---------------------------------------------------
+logs/
 *.log
 npm-debug.log*
-pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
-# OS
-.DS_Store
+# --- Processos / runtime (PM2, pids) ------------------------
+pids/
+*.pid
+*.pid.lock
+*.seed
+.pm2/
 
-# Tests
-/coverage
-/.nyc_output
+# --- Testes e cobertura -------------------------------------
+coverage/
+.nyc_output/
+test-results/
+junit.xml
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+# --- Cache de ferramentas -----------------------------------
+.eslintcache
+.prettiercache
+.cache/
+.temp/
+.tmp/
+tmp/
+*.tgz
 
-# IDE - VSCode
+# --- Editores e IDEs ----------------------------------------
+.idea/
+*.iml
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+.settings/
+.c9/
+*.launch
+*.swp
+*.swo
+*~
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+# --- Sistema operacional ------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
 
-# temp directory
-.temp
-.tmp
+# --- Docker (caso seja adotado no futuro) -------------------
+docker-compose.override.yml
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# --- Arquivos de backup / lixo ------------------------------
+*.bak
+*.orig
+*.rej
